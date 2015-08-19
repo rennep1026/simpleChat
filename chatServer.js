@@ -4,6 +4,7 @@ module.exports.startIO = function(server){
 
     users = [];
     names = {};
+    colors = {};
     motd = {};
 
     io.on('connection', function(socket){
@@ -42,6 +43,16 @@ module.exports.startIO = function(server){
                         thisMessage["SERVER"] = values.join(' ');
                         io.emit('message', thisMessage);
                     }
+                    if (command == 'color') { //Update user text color
+                        if(values[0].substr(0,1)=='#' && (values[0].length==4 || values[0].length==7)){
+                            colors[socket.id] = values[0];
+                            io.emit('colors', colors);
+                        } else {
+                            var thisMessage = {};
+                            thisMessage["SERVER"] = "Invalid color code. Please use the hexadecimal value of the color.";
+                            socket.emit('message', thisMessage)
+                        }
+                    }
                 }
                 else { //Normal Chat Message
                     var thisMessage = {};
@@ -55,9 +66,11 @@ module.exports.startIO = function(server){
         socket.on('disconnect', function(){
             if(users.indexOf(socket)!=-1){
                 delete names[socket.id];
+                delete colors[socket.id];
                 users.splice(users.indexOf(socket), 1);
             }
             io.emit('users', names);
+            io.emit('colors', colors);
         });
         socket.on('join', function(userInfo){ //Logging In
             db.clientJoin(userInfo, function(err, res){
@@ -68,8 +81,10 @@ module.exports.startIO = function(server){
                     if(res){
                         users.push(socket);
                         names[socket.id] = userInfo.name;
+                        colors[socket.id] = "#000000";
                         socket.emit('you', userInfo.name);
                         io.emit('users', names);
+                        io.emit('colors', colors);
                         socket.emit('login', {status: true});
                         console.log('Login Successful');
                     } else {
@@ -80,5 +95,7 @@ module.exports.startIO = function(server){
             });
         });
         io.emit('users', names); //Updates user list
+        io.emit('colors', colors); //Updates user defined colors
+
     });
 };

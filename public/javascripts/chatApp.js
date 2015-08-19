@@ -1,8 +1,9 @@
 var socket = io();
 var setName = false;
 var messageList = [];
-var userList = {};
-var activeUsers = {};
+var userList = {}; //{id: name}
+var activeUsers = {};//{id: name}
+var userColors = {};//{id: color}
 var myName = '';
 
 function sendChat(){
@@ -38,6 +39,15 @@ socket.on('users', function(users){
     }
     displayMessages();
 });
+socket.on('colors', function(colors){
+    userColors = colors;
+    var styleText = '\n';
+    for(var user in userColors){
+        styleText += '\t.' + userList[user] + '-message { color: ' + userColors[user] + ';}\n';
+    }
+    styleText += '\t.SERVER-message {color: #000; background-color: #F00; font-weight: bold;}';
+    $('#userColors').text(styleText);
+});
 socket.on('you', function(name){
     myName = name;
 });
@@ -64,7 +74,7 @@ function displayMessages(){
         var userID = Object.keys(thisMessage)[0];
         var message = thisMessage[userID];
         var name = (userList[userID] !== undefined ? userList[userID] : userID);
-        $('#messages').append($('<li>').append($('<span>')).addClass(name).text(name+ ": " + message));
+        $('#messages').append($('<li>').append($('<span>')).addClass(name+"-message").text(name+ ": " + message));
     }
     if(atBottom) {
         $('#messages')[0].scrollTop = $('#messages')[0].scrollHeight;
