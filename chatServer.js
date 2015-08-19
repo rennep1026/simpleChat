@@ -4,7 +4,7 @@ module.exports.startIO = function(server){
 
     users = [];
     names = {};
-    motd = {};
+    //motd = {};
 
     io.on('connection', function(socket){
         socket.on('message', function(msg){
@@ -17,6 +17,7 @@ module.exports.startIO = function(server){
                         names[socket.id] = values.join(' ');
                         io.emit('users', names);
                     }
+                    /*
                     if (command == 'setMOTD') { //Set Message of the Day
                         clearInterval(motd);
                         var interval = 5 * 1000;
@@ -37,6 +38,7 @@ module.exports.startIO = function(server){
                             }
                         }
                     }
+                    */
                     if (command == 'server') { //Send Server Message
                         var thisMessage = {};
                         thisMessage["SERVER"] = values.join(' ');
