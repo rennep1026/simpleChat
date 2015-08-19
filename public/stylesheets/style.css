@@ -1,72 +1,49 @@
-#chatForm input, #chatForm button {
-  width: 100%;
-}
 #chatApp {
   height: 100vh;
+  max-width: 992px;
+  margin: 0 auto;
 }
-#mainContainer{
-  height: 78vh;
-  position: relative;
-  top: 6vh;
+
+#mainContainer {
+  height: 80%;
+  max-height: 600px;
+  margin-top: 40px;
 }
-#mainContainer > ul{
+
+#mainContainer ul {
+  height: 100%;
   overflow: auto;
-  height: 78vh;
+  list-style: none;
   margin: 0;
-}
-#chatFormContainer {
-  position: relative;
-  height: 5vh;
-  bottom: -5vh;
-  margin-top: 5vh;
-  clear: both;
-}
-
-#mobileUserList {
-  margin-bottom: 0;
-  position: absolute;
-  top: -6vh;
-  height: 6vh;
-  width: 100%;
-  z-index: 1;
-}
-
-#mobileUserList .panel-heading {
-  height: 6vh;
-  text-align: center;
   padding: 0;
 }
 
-#mobileUserList .panel-heading h4 {
-  line-height: 6vh;
-}
-
-#mobileUserList a {
-  display: inline-block;
+#mainContainer ul  li {
+  padding: 5px 10px;
   width: 100%;
-  height: 100%;
+  white-space: pre-wrap;
+  background-color: #eee;
 }
 
-
-#mobileUserList ul {
-  height: auto;
-  padding: 10px;
+#mainContainer ul li:nth-child(odd) {
+  background-color: #fff;
 }
-ul { list-style-type: none; margin: 0; padding: 0;}
-ul  li { padding: 5px 10px; width: 100%; white-space: pre-wrap; background-color: #eee;}
-ul li:nth-child(odd) { background-color: #fff; }
-.no-close .ui-dialog-titlebar-close { display: none; }
 
-@media (min-width: 992px) {
-  #mainContainer{
-    height: 100%;
-  }
-  #mainContainer > ul{
-    overflow: auto;
-    height: 100%;
-  }
-  #chatApp {
-    width: 800px;
-    height: 600px;
-  }
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+#mobileUserList {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+#chatForm {
+  margin-top: 5px;
+}
+
+#chatForm input, #chatForm button {
+  width: 100%;
 }
