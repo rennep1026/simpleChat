@@ -1,0 +1,72 @@
+#chatForm input, #chatForm button {
+  width: 100%;
+}
+#chatApp {
+  height: 100vh;
+}
+#mainContainer{
+  height: 78vh;
+  position: relative;
+  top: 6vh;
+}
+#mainContainer > ul{
+  overflow: auto;
+  height: 78vh;
+  margin: 0;
+}
+#chatFormContainer {
+  position: relative;
+  height: 5vh;
+  bottom: -5vh;
+  margin-top: 5vh;
+  clear: both;
+}
+
+#mobileUserList {
+  margin-bottom: 0;
+  position: absolute;
+  top: -6vh;
+  height: 6vh;
+  width: 100%;
+  z-index: 1;
+}
+
+#mobileUserList .panel-heading {
+  height: 6vh;
+  text-align: center;
+  padding: 0;
+}
+
+#mobileUserList .panel-heading h4 {
+  line-height: 6vh;
+}
+
+#mobileUserList a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+
+#mobileUserList ul {
+  height: auto;
+  padding: 10px;
+}
+ul { list-style-type: none; margin: 0; padding: 0;}
+ul  li { padding: 5px 10px; width: 100%; white-space: pre-wrap; background-color: #eee;}
+ul li:nth-child(odd) { background-color: #fff; }
+.no-close .ui-dialog-titlebar-close { display: none; }
+
+@media (min-width: 992px) {
+  #mainContainer{
+    height: 100%;
+  }
+  #mainContainer > ul{
+    overflow: auto;
+    height: 100%;
+  }
+  #chatApp {
+    width: 800px;
+    height: 600px;
+  }
+}
