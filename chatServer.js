@@ -69,6 +69,7 @@ module.exports.startIO = function(server){
             io.emit('colors', colors);
         });
         socket.on('join', function(userInfo){ //Logging In
+            userInfo.name = userInfo.name.toLowerCase();
             db.clientJoin(userInfo, function(err, res){
                 if(err){
                     console.log(err);
