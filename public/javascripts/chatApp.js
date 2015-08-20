@@ -91,7 +91,18 @@ function sendJoinName(){
     return false;
 }
 
+function updateColor(id, newValue){
+    socket.emit('color', newValue);
+}
+
 $(function(){
+    $('#color1').colorPicker({
+        showHexField: false,
+        pickerDefault: "000000",
+        onColorChange : function(id, newValue){updateColor(id, newValue)},
+        colors: ['000000', 'FF0000', 'FF7F00', 'DDDD00', '00EE00', '0000FF', '4B0082', '8B30FF']
+    });
+
     $("#dialog-join").dialog({
         dialogClass: "no-close",
         autoOpen: true,

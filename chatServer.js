@@ -43,16 +43,6 @@ module.exports.startIO = function(server){
                         thisMessage["SERVER"] = values.join(' ');
                         io.emit('message', thisMessage);
                     }
-                    if (command == 'color') { //Update user text color
-                        if(values[0].substr(0,1)=='#' && (values[0].length==4 || values[0].length==7)){
-                            colors[socket.id] = values[0];
-                            io.emit('colors', colors);
-                        } else {
-                            var thisMessage = {};
-                            thisMessage["SERVER"] = "Invalid color code. Please use the hexadecimal value of the color.";
-                            socket.emit('message', thisMessage)
-                        }
-                    }
                 }
                 else { //Normal Chat Message
                     var thisMessage = {};
@@ -62,6 +52,11 @@ module.exports.startIO = function(server){
             } else { //if user is not logged in
                 console.log("HACKER!!!!111!!11 -> " + socket.handshake.address + ": " + msg);
             }
+        });
+        socket.on('color', function(color){
+            console.log('updateColor');
+            colors[socket.id] = color;
+            io.emit('colors', colors);
         });
         socket.on('disconnect', function(){
             if(users.indexOf(socket)!=-1){
@@ -98,4 +93,5 @@ module.exports.startIO = function(server){
         io.emit('colors', colors); //Updates user defined colors
 
     });
+
 };

@@ -57,6 +57,10 @@ ul  li { padding: 5px 10px; width: 100%; white-space: pre-wrap; background-color
 ul li:nth-child(odd) { background-color: #fff; }
 .no-close .ui-dialog-titlebar-close { display: none; }
 
+#color-picker {
+  width: 20px;
+}
+
 @media (min-width: 992px) {
   #mainContainer{
     height: 100%;
