@@ -56,7 +56,6 @@ module.exports.startIO = function(server){
             }
         });
         socket.on('color', function(color){
-            console.log('updateColor');
             colors[socket.id] = color;
             io.emit('colors', colors);
         });
