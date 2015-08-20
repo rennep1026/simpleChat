@@ -46,3 +46,21 @@
 #chatForm input, #chatForm button {
   width: 100%;
 }
+
+#color-picker {
+  width: 20px;
+}
+
+@media (min-width: 992px) {
+  #mainContainer{
+    height: 100%;
+  }
+  #mainContainer > ul{
+    overflow: auto;
+    height: 100%;
+  }
+  #chatApp {
+    width: 800px;
+    height: 600px;
+  }
+}

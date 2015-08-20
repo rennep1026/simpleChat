@@ -5,6 +5,7 @@ module.exports.startIO = function(server){
     users = [];
     names = {};
     //motd = {};
+    colors = {};
 
     io.on('connection', function(socket){
         socket.on('message', function(msg){
@@ -54,12 +55,19 @@ module.exports.startIO = function(server){
                 console.log("HACKER!!!!111!!11 -> " + socket.handshake.address + ": " + msg);
             }
         });
+        socket.on('color', function(color){
+            console.log('updateColor');
+            colors[socket.id] = color;
+            io.emit('colors', colors);
+        });
         socket.on('disconnect', function(){
             if(users.indexOf(socket)!=-1){
                 delete names[socket.id];
+                delete colors[socket.id];
                 users.splice(users.indexOf(socket), 1);
             }
             io.emit('users', names);
+            io.emit('colors', colors);
         });
         socket.on('join', function(userInfo){ //Logging In
             db.clientJoin(userInfo, function(err, res){
@@ -70,8 +78,10 @@ module.exports.startIO = function(server){
                     if(res){
                         users.push(socket);
                         names[socket.id] = userInfo.name;
+                        colors[socket.id] = "#000000";
                         socket.emit('you', userInfo.name);
                         io.emit('users', names);
+                        io.emit('colors', colors);
                         socket.emit('login', {status: true});
                         console.log('Login Successful');
                     } else {
@@ -82,5 +92,8 @@ module.exports.startIO = function(server){
             });
         });
         io.emit('users', names); //Updates user list
+        io.emit('colors', colors); //Updates user defined colors
+
     });
+
 };
