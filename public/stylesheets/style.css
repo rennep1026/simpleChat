@@ -4,22 +4,31 @@
 #chatApp {
   height: 100vh;
 }
+#headerContainer{
+  height: 8vh;
+  text-align: center;
+}
+#headerContainer a{
+  font-size: 2em;
+  position: absolute;
+  left: 0;
+  margin: 5px;
+}
+#headerContainer h1{
+  display: inline-block;
+  margin: 0;
+}
 #mainContainer{
-  height: 78vh;
-  position: relative;
-  top: 6vh;
+  height: 81vh;
 }
 #mainContainer > ul{
   overflow: auto;
-  height: 78vh;
+  height: 100%;
   margin: 0;
 }
 #chatFormContainer {
-  position: relative;
-  height: 5vh;
-  bottom: -5vh;
-  margin-top: 5vh;
-  clear: both;
+  height: 8vh;
+  padding-top: 10px;
 }
 
 #mobileUserList {
@@ -68,5 +77,9 @@ ul li:nth-child(odd) { background-color: #fff; }
   #chatApp {
     width: 800px;
     height: 600px;
+  }
+  #chatFormContainer {
+    padding: 0;
+    line-height: 8vh;
   }
 }
