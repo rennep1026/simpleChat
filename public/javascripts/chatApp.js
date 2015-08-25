@@ -22,6 +22,9 @@ function sendChat(){
         return false;
     }
 }
+socket.on('reconnect_failed', function(err){
+   location.reload();
+});
 socket.on('message', function(message){
     messageList.push(message);
     displayMessages();
