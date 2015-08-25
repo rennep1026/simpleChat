@@ -4,10 +4,37 @@
   margin: 0 auto;
 }
 
-#mainContainer {
-  height: 80%;
-  max-height: 600px;
-  margin-top: 40px;
+#menuContainer {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 175px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 5px;
+}
+#menuContainer:focus {
+  outline: none;
+}
+
+#headerContainer{
+  height: 8vh;
+  text-align: center;
+}
+#headerContainer a{
+  font-size: 2em;
+  position: absolute;
+  left: 0;
+  margin: 5px;
+}
+#headerContainer h1{
+  display: inline-block;
+  margin: 0;
+}
+#mainContainer{
+  height: 81%;
 }
 
 #mainContainer ul {
@@ -15,6 +42,11 @@
   overflow: auto;
   list-style: none;
   margin: 0;
+}
+
+#chatFormContainer {
+  height: 8vh;
+  padding-top: 10px;
 }
 
 #mainContainer ul  li {
@@ -52,6 +84,9 @@
 }
 
 @media (min-width: 992px) {
+  #menuContainer{
+    display:block;
+  }
   #mainContainer{
     height: 100%;
   }
@@ -60,7 +95,11 @@
     height: 100%;
   }
   #chatApp {
-    width: 800px;
+    width: 660px;
     height: 600px;
+  }
+  #chatFormContainer {
+    padding: 0;
+    line-height: 8vh;
   }
 }

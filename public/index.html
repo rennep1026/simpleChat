@@ -31,7 +31,15 @@
                 <input type="submit" id="hiddenSubmit" tabindex="-1" style="position:absolute; top:-1000px">
             </form>
         </div>
-        <div id="mainContainer" class="row">
+        <div id="menuContainer">
+            <ul class="users"></ul>
+        </div>
+        <div id="headerContainer" class="row">
+            <div class="col-xs-12">
+                <a id="menuBtn" aria-label="menu" class="visible-xs-inline-block visible-sm-inline-block"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+                <h1>SimpleChat 0.0.1</h1>
+            </div>
+            <!--
             <div id="mobileUserList" class="panel-group visible-xs-block visible-sm-block" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
@@ -46,8 +54,10 @@
                     </div>
                 </div>
             </div>
-            <ul id="messages" class="col-md-9"></ul>
-            <ul class="users col-md-3 visible-md-block visible-lg-block"></ul>
+            -->
+        </div>
+        <div id="mainContainer" class="row">
+            <ul id="messages" class="col-md-12"></ul>
         </div>
         <div id="chatFormContainer" class="row">
             <form id="chatForm" class="form-inline" action="" onsubmit="return sendChat()">
