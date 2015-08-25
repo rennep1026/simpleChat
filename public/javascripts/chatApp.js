@@ -81,6 +81,20 @@ function sendJoinName(){
     return false;
 }
 
+function toggleMenu(display) {
+    if(!$('#menuContainer').is(':animated')) {
+        var currentDisplay = $('#menuContainer').css('display') == 'block';
+        if (typeof display == undefined || display != currentDisplay) {
+            //$('#menuBtn').animate({left: ( currentDisplay ? 0 : 175)}, 350);
+            $('#menuBtn').toggle();
+            $('#menuContainer').animate({width: 'toggle'}, 350);
+            if (!currentDisplay) {
+                $('#menuContainer').attr('tabindex', -1).focus();
+            }
+        }
+    }
+}
+
 $(function(){
     $("#dialog-join").dialog({
         dialogClass: "no-close",
@@ -104,7 +118,12 @@ $(function(){
         sendJoinName();
     });
 
-    $('#mobileUserCollapse').on("blur", function(event){
-        $('#collapseOne').collapse('hide');
-    })
+    $('#menuBtn').on("click", function(){
+        toggleMenu();
+    });
+    $('#menuContainer').on("focusout", function(){
+        toggleMenu(false);
+    });
+
+
 });

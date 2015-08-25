@@ -4,6 +4,22 @@
 #chatApp {
   height: 100vh;
 }
+
+#menuContainer {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 175px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 5px;
+}
+#menuContainer:focus {
+  outline: none;
+}
+
 #headerContainer{
   height: 8vh;
   text-align: center;
@@ -67,6 +83,9 @@ ul li:nth-child(odd) { background-color: #fff; }
 .no-close .ui-dialog-titlebar-close { display: none; }
 
 @media (min-width: 992px) {
+  #menuContainer{
+    display:block;
+  }
   #mainContainer{
     height: 100%;
   }
@@ -75,7 +94,7 @@ ul li:nth-child(odd) { background-color: #fff; }
     height: 100%;
   }
   #chatApp {
-    width: 800px;
+    width: 660px;
     height: 600px;
   }
   #chatFormContainer {
