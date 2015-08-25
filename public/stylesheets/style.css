@@ -6,7 +6,7 @@
 
 #menuContainer {
   display: none;
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   left: 0;
   top: 0;
@@ -37,11 +37,12 @@
   height: 81%;
 }
 
-#mainContainer ul {
+ul {
   height: 100%;
   overflow: auto;
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 #chatFormContainer {
@@ -49,14 +50,14 @@
   padding-top: 10px;
 }
 
-#mainContainer ul  li {
+ul  li {
   padding: 5px 10px;
   width: 100%;
   white-space: pre-wrap;
   background-color: #eee;
 }
 
-#mainContainer ul li:nth-child(odd) {
+ul li:nth-child(odd) {
   background-color: #fff;
 }
 
@@ -90,7 +91,7 @@
   #mainContainer{
     height: 100%;
   }
-  #mainContainer > ul{
+  ul{
     overflow: auto;
     height: 100%;
   }
