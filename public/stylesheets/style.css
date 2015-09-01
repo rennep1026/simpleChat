@@ -86,7 +86,7 @@ ul li:nth-child(odd) {
 
 @media (min-width: 992px) {
   #menuContainer{
-    display:block;
+    display:block!important;
   }
   #mainContainer{
     height: 100%;
